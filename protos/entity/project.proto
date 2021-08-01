@@ -11,8 +11,8 @@ service EntitySvc {
     rpc create (CreateEntityRequest) returns (EntityResponse);
     rpc get (FetchEntityRequest) returns (EntityResponse);
     rpc list  (ListEntityRequest) returns (EntityListResponse);
-    rpc move (MoveEntityRequest) returns (EntityResponse)
-    rpc delete (DeleteEntityRequest) returns (EntityResponse)
+    rpc move (MoveEntityRequest) returns (EntityResponse);
+    rpc delete (DeleteEntityRequest) returns (EntityResponse);
 }
 
 message CreateEntityRequest {
