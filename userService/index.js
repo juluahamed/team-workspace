@@ -20,7 +20,7 @@ async function main() {
     let server = new grpc.Server();
     server.addService(services.UserSvcService, {
         register: api.register,
-        // login: api.login,
+        login: api.login,
         verify: api.verify,
         // getUser: api.getUser,
     });

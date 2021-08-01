@@ -32,12 +32,14 @@ module.exports = class API {
           console.log('savedUser', savedUser);
           resp.setUserid(savedUser.userId)
           resp.setName(savedUser.name);
-          const token = await generateToken(savedUser)
+          const tokenisableObject = savedUser.getPublic()
+          const token = await generateToken(tokenisableObject)
           resp.setUsername(savedUser.userName)
           resp.setToken(token);
           callback(null, resp);
       }
     } catch(err) {
+      console.log('error', err)
         resp.setError('Unexpected error occured. Check UserService logs');
         callback(null, resp)
     }
@@ -55,6 +57,37 @@ module.exports = class API {
     } else {
       resp.setError('Failed token verification')
       callback(null, resp)
+    }
+  };
+  login = async (call, callback) => {
+    const resp = new messages.UserResponse();
+    try {
+      const userName =  call.request.getUsername();
+      const password = call.request.getPassword();
+      const user = await UserRead.findOne({userName});
+      if (user) {
+        const hash = await bcrypt.hash(password, 10);
+        console.log('hash', hash);
+        console.log('user of the hash', user)
+        if (hash === user.passwordHash) {
+          const tokenisableObject = user.getPublic()
+          const token = await generateToken(tokenisableObject)
+          resp.setUserid(tokenisableObject.userId)
+          resp.setName(tokenisableObject.name);
+          resp.setUsername(tokenisableObject.userName);
+          resp.setToken(token);
+          callback(null, resp);
+        } else {
+          resp.setError('Incorrect userId/password');
+          callback(null, resp);
+        }
+      } else {
+          resp.setError('Incorrect userId/password');
+          callback(null, resp);
+      } 
+    } catch(err) {
+      resp.setError('Unexpected error. Refer userService logs');
+      callback(null, resp);
     }
   }
 

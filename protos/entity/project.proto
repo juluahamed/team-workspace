@@ -1,0 +1,70 @@
+// protos/project/entity.proto
+
+syntax = "proto3";
+
+package entity;
+
+option go_package = "github.com/juluahamed/team-workspace/protos/entity";
+
+
+service EntitySvc {
+    rpc create (CreateEntityRequest) returns (EntityResponse);
+    rpc get (FetchEntityRequest) returns (EntityResponse);
+    rpc list  (ListEntityRequest) returns (EntityListResponse);
+    rpc move (MoveEntityRequest) returns (EntityResponse)
+    rpc delete (DeleteEntityRequest) returns (EntityResponse)
+}
+
+message CreateEntityRequest {
+    string name = 1;
+    string owner = 2;
+    string parent = 3;
+    string content = 4;
+    repeated string sharedUsers = 5;
+    string entityType = 6;
+    string projectId = 7;
+    string createdAt = 8;
+    string updatedAt = 9;
+}
+
+
+message FetchEntityRequest {
+    string entityId = 1;
+    string requesterId = 2;
+}
+
+message EntityResponse {
+    string entityId = 1;
+    string name = 2;
+    string owner = 3;
+    string parent = 4;
+    string content = 5;
+    repeated string sharedUsers = 6;
+    string entityType = 7;
+    string projectId = 8;
+    string createdAt = 9;
+    string updatedAt = 10;
+    string error = 11;
+}
+
+message ListEntityRequest {
+    string parentEntityId = 1;
+    string requesterId = 2;
+}
+
+
+message EntityListResponse {
+    repeated EntityResponse entities = 1;
+}
+
+
+message MoveEntityRequest {
+    string entityId = 1;
+    string destinationParentEntity = 2;
+    string requesterId = 3;
+}
+
+message DeleteEntityRequest {
+    string entityId = 1;
+    string requesterId = 2;
+}

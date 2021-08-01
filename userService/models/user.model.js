@@ -19,6 +19,8 @@ const userSchema=new mongoose.Schema({
       type: String,
       required: true
     }
+}, {
+  timestamps: true,
 });
 
 userSchema.pre('save', async function save(next) {
@@ -40,7 +42,7 @@ userSchema.pre('save', async function save(next) {
 userSchema.method({
     getPublic() {
       const transformed = {};
-      const fields = ['userId', 'userName'];
+      const fields = ['userId', 'userName', 'name'];
   
       fields.forEach((field) => {
         transformed[field] = this[field];
@@ -96,6 +98,7 @@ userSchema.statics = {
 
 
 userSchema.index({userId: 1});
+userSchema.index({userName: 1}, {unique: true})
 
 
 module.exports = {
