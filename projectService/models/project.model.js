@@ -15,10 +15,10 @@ const projectSchema=new mongoose.Schema({
       type: Boolean,
       default: false
     },
-    sharedUsers: {
+    sharedUsers: [{
       type: String,
       required: true
-    },
+    }],
     owner: {
       type: String,
       required: true

@@ -33,6 +33,7 @@ module.exports = class API {
       callback(null, resp);
 
     } catch(err) {
+        console.log(err)
         resp.setError('Unexpected error occured. Check ProjectService logs');
         callback(null, resp)
     }
