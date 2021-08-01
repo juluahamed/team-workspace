@@ -29,6 +29,7 @@ message ShareProjectRequest {
 
 message ProjectListResponse {
     repeated ProjectResponse projects = 1;
+    string error = 2;
 }
 
 message ListProjectRequest {
@@ -43,4 +44,5 @@ message ProjectResponse {
     repeated string sharedUsers = 5;
     string updatedAt = 6;
     string createdAt = 7;
+    string error = 8;
 }

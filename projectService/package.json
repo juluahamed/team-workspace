@@ -1,0 +1,21 @@
+{
+  "name": "projectservice",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Julu Ahamed",
+  "license": "ISC",
+  "dependencies": {
+    "@grpc/grpc-js": "^1.3.6",
+    "@grpc/proto-loader": "^0.6.4",
+    "bcrypt": "^5.0.1",
+    "dotenv": "^10.0.0",
+    "google-protobuf": "^3.17.3",
+    "jsonwebtoken": "^8.5.1",
+    "mongoose": "^5.13.5",
+    "uuid": "^8.3.2"
+  }
+}

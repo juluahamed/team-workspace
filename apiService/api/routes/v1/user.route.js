@@ -13,7 +13,7 @@ const router = express.Router();
 router
   .route('/')
   .post(validate(registerUser), controller.registerUser);
-  .post(validate(), controller.getUser)
+  // .post(validate(), controller.getUser)
 
 
 

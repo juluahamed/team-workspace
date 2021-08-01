@@ -41,7 +41,7 @@ module.exports = class API {
         resp.setError('Unexpected error occured. Check UserService logs');
         callback(null, resp)
     }
-  },
+  };
   verify = async (call, callback) => {
     const resp = new messages.UserResponse();
 
