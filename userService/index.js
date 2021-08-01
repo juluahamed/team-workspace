@@ -21,7 +21,7 @@ async function main() {
     server.addService(services.UserSvcService, {
         register: api.register,
         // login: api.login,
-        // verify: api.verify,
+        verify: api.verify,
         // getUser: api.getUser,
     });
     let address = process.env.HOST + ":" + process.env.PORT;

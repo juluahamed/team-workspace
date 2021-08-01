@@ -4,7 +4,7 @@ syntax = "proto3";
 
 package user;
 
-option go_package = "github.com/juluahamed/grpc-demo/protos/user";
+option go_package = "github.com/juluahamed/team-workspace/protos/user";
 
 
 service UserSvc {

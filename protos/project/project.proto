@@ -1,0 +1,46 @@
+// protos/project/project.proto
+
+syntax = "proto3";
+
+package user;
+
+option go_package = "github.com/juluahamed/team-workspace/protos/project";
+
+
+service ProjectSvc {
+    rpc create(CreateProjectRequest) returns (ProjectResponse);
+    rpc share (ShareProjectRequest) returns (ProjectResponse);
+    rpc list  (ListProjectRequest) returns (ProjectListResponse)
+}
+
+message CreateProjectRequest {
+    string name = 1;
+    string owner = 2;
+    bool default = 3;
+    repeated string sharedUsers = 4;
+}
+
+message ShareProjectRequest {
+    string projectId = 1;
+    repeated string userIds = 2;
+    string requesterId = 3;
+}
+
+
+message ProjectListResponse {
+    repeated ProjectResponse projects = 1;
+}
+
+message ListProjectRequest {
+    string userId = 1
+}
+
+message ProjectResponse {
+    string projectId = 1;
+    string name = 2;
+    string owner = 3;
+    bool default = 4;
+    repeated string sharedUsers = 5;
+    string updatedAt = 6;
+    string createdAt = 7;
+}
