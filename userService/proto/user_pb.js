@@ -792,7 +792,8 @@ proto.user.UserResponse.toObject = function(includeInstance, msg) {
     userid: jspb.Message.getFieldWithDefault(msg, 1, ""),
     username: jspb.Message.getFieldWithDefault(msg, 2, ""),
     name: jspb.Message.getFieldWithDefault(msg, 3, ""),
-    token: jspb.Message.getFieldWithDefault(msg, 4, "")
+    token: jspb.Message.getFieldWithDefault(msg, 4, ""),
+    error: jspb.Message.getFieldWithDefault(msg, 5, "")
   };
 
   if (includeInstance) {
@@ -844,6 +845,10 @@ proto.user.UserResponse.deserializeBinaryFromReader = function(msg, reader) {
     case 4:
       var value = /** @type {string} */ (reader.readString());
       msg.setToken(value);
+      break;
+    case 5:
+      var value = /** @type {string} */ (reader.readString());
+      msg.setError(value);
       break;
     default:
       reader.skipField();
@@ -899,6 +904,13 @@ proto.user.UserResponse.serializeBinaryToWriter = function(message, writer) {
   if (f.length > 0) {
     writer.writeString(
       4,
+      f
+    );
+  }
+  f = message.getError();
+  if (f.length > 0) {
+    writer.writeString(
+      5,
       f
     );
   }
@@ -977,6 +989,24 @@ proto.user.UserResponse.prototype.setToken = function(value) {
 };
 
 
+/**
+ * optional string error = 5;
+ * @return {string}
+ */
+proto.user.UserResponse.prototype.getError = function() {
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 5, ""));
+};
+
+
+/**
+ * @param {string} value
+ * @return {!proto.user.UserResponse} returns this
+ */
+proto.user.UserResponse.prototype.setError = function(value) {
+  return jspb.Message.setProto3StringField(this, 5, value);
+};
+
+
 
 
 
@@ -1011,7 +1041,8 @@ proto.user.UserVerifyResponse.toObject = function(includeInstance, msg) {
   var f, obj = {
     userid: jspb.Message.getFieldWithDefault(msg, 1, ""),
     username: jspb.Message.getFieldWithDefault(msg, 2, ""),
-    name: jspb.Message.getFieldWithDefault(msg, 3, "")
+    name: jspb.Message.getFieldWithDefault(msg, 3, ""),
+    error: jspb.Message.getFieldWithDefault(msg, 4, "")
   };
 
   if (includeInstance) {
@@ -1060,6 +1091,10 @@ proto.user.UserVerifyResponse.deserializeBinaryFromReader = function(msg, reader
       var value = /** @type {string} */ (reader.readString());
       msg.setName(value);
       break;
+    case 4:
+      var value = /** @type {string} */ (reader.readString());
+      msg.setError(value);
+      break;
     default:
       reader.skipField();
       break;
@@ -1107,6 +1142,13 @@ proto.user.UserVerifyResponse.serializeBinaryToWriter = function(message, writer
   if (f.length > 0) {
     writer.writeString(
       3,
+      f
+    );
+  }
+  f = message.getError();
+  if (f.length > 0) {
+    writer.writeString(
+      4,
       f
     );
   }
@@ -1164,6 +1206,24 @@ proto.user.UserVerifyResponse.prototype.getName = function() {
  */
 proto.user.UserVerifyResponse.prototype.setName = function(value) {
   return jspb.Message.setProto3StringField(this, 3, value);
+};
+
+
+/**
+ * optional string error = 4;
+ * @return {string}
+ */
+proto.user.UserVerifyResponse.prototype.getError = function() {
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 4, ""));
+};
+
+
+/**
+ * @param {string} value
+ * @return {!proto.user.UserVerifyResponse} returns this
+ */
+proto.user.UserVerifyResponse.prototype.setError = function(value) {
+  return jspb.Message.setProto3StringField(this, 4, value);
 };
 
 
