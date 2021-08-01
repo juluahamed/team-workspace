@@ -1,0 +1,47 @@
+// protos/user/user.proto
+
+syntax = "proto3";
+
+package user;
+
+option go_package = "github.com/juluahamed/grpc-demo/protos/user";
+
+
+service UserSvc {
+    rpc register(UserRegisterRequest) returns (UserResponse);
+    rpc login (UserLoginRequest) returns (UserResponse);
+    rpc verify (UserVerifyRequest) returns (UserVerifyResponse);
+    rpc getUser (GetUserRequest) returns (UserVerifyResponse);
+}
+
+message UserRegisterRequest {
+    string username = 1;
+    string password = 2;
+    string name = 3;
+}
+
+message UserLoginRequest {
+    string username = 1;
+    string password = 2;
+}
+
+message UserVerifyRequest {
+    string token = 1;
+}
+
+message GetUserRequest {
+    string userId = 1;
+}
+
+message UserResponse {
+    string userId = 1;
+    string username = 2;
+    string name = 3;
+    string token = 4;
+}
+
+message UserVerifyResponse {
+    string userId = 1;
+    string username = 2;
+    string name = 3;
+}
