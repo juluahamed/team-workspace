@@ -627,7 +627,8 @@ proto.user.ProjectListResponse.prototype.toObject = function(opt_includeInstance
 proto.user.ProjectListResponse.toObject = function(includeInstance, msg) {
   var f, obj = {
     projectsList: jspb.Message.toObjectList(msg.getProjectsList(),
-    proto.user.ProjectResponse.toObject, includeInstance)
+    proto.user.ProjectResponse.toObject, includeInstance),
+    error: jspb.Message.getFieldWithDefault(msg, 2, "")
   };
 
   if (includeInstance) {
@@ -669,6 +670,10 @@ proto.user.ProjectListResponse.deserializeBinaryFromReader = function(msg, reade
       reader.readMessage(value,proto.user.ProjectResponse.deserializeBinaryFromReader);
       msg.addProjects(value);
       break;
+    case 2:
+      var value = /** @type {string} */ (reader.readString());
+      msg.setError(value);
+      break;
     default:
       reader.skipField();
       break;
@@ -704,6 +709,13 @@ proto.user.ProjectListResponse.serializeBinaryToWriter = function(message, write
       1,
       f,
       proto.user.ProjectResponse.serializeBinaryToWriter
+    );
+  }
+  f = message.getError();
+  if (f.length > 0) {
+    writer.writeString(
+      2,
+      f
     );
   }
 };
@@ -744,6 +756,24 @@ proto.user.ProjectListResponse.prototype.addProjects = function(opt_value, opt_i
  */
 proto.user.ProjectListResponse.prototype.clearProjectsList = function() {
   return this.setProjectsList([]);
+};
+
+
+/**
+ * optional string error = 2;
+ * @return {string}
+ */
+proto.user.ProjectListResponse.prototype.getError = function() {
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 2, ""));
+};
+
+
+/**
+ * @param {string} value
+ * @return {!proto.user.ProjectListResponse} returns this
+ */
+proto.user.ProjectListResponse.prototype.setError = function(value) {
+  return jspb.Message.setProto3StringField(this, 2, value);
 };
 
 
@@ -922,7 +952,8 @@ proto.user.ProjectResponse.toObject = function(includeInstance, msg) {
     pb_default: jspb.Message.getBooleanFieldWithDefault(msg, 4, false),
     sharedusersList: (f = jspb.Message.getRepeatedField(msg, 5)) == null ? undefined : f,
     updatedat: jspb.Message.getFieldWithDefault(msg, 6, ""),
-    createdat: jspb.Message.getFieldWithDefault(msg, 7, "")
+    createdat: jspb.Message.getFieldWithDefault(msg, 7, ""),
+    error: jspb.Message.getFieldWithDefault(msg, 8, "")
   };
 
   if (includeInstance) {
@@ -986,6 +1017,10 @@ proto.user.ProjectResponse.deserializeBinaryFromReader = function(msg, reader) {
     case 7:
       var value = /** @type {string} */ (reader.readString());
       msg.setCreatedat(value);
+      break;
+    case 8:
+      var value = /** @type {string} */ (reader.readString());
+      msg.setError(value);
       break;
     default:
       reader.skipField();
@@ -1062,6 +1097,13 @@ proto.user.ProjectResponse.serializeBinaryToWriter = function(message, writer) {
   if (f.length > 0) {
     writer.writeString(
       7,
+      f
+    );
+  }
+  f = message.getError();
+  if (f.length > 0) {
+    writer.writeString(
+      8,
       f
     );
   }
@@ -1210,6 +1252,24 @@ proto.user.ProjectResponse.prototype.getCreatedat = function() {
  */
 proto.user.ProjectResponse.prototype.setCreatedat = function(value) {
   return jspb.Message.setProto3StringField(this, 7, value);
+};
+
+
+/**
+ * optional string error = 8;
+ * @return {string}
+ */
+proto.user.ProjectResponse.prototype.getError = function() {
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 8, ""));
+};
+
+
+/**
+ * @param {string} value
+ * @return {!proto.user.ProjectResponse} returns this
+ */
+proto.user.ProjectResponse.prototype.setError = function(value) {
+  return jspb.Message.setProto3StringField(this, 8, value);
 };
 
 
