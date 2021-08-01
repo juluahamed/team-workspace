@@ -10,7 +10,7 @@ option go_package = "github.com/juluahamed/team-workspace/protos/project";
 service ProjectSvc {
     rpc create(CreateProjectRequest) returns (ProjectResponse);
     rpc share (ShareProjectRequest) returns (ProjectResponse);
-    rpc list  (ListProjectRequest) returns (ProjectListResponse)
+    rpc list  (ListProjectRequest) returns (ProjectListResponse);
 }
 
 message CreateProjectRequest {
@@ -32,7 +32,7 @@ message ProjectListResponse {
 }
 
 message ListProjectRequest {
-    string userId = 1
+    string userId = 1;
 }
 
 message ProjectResponse {
