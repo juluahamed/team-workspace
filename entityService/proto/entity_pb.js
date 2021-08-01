@@ -1214,7 +1214,8 @@ proto.entity.ListEntityRequest.prototype.toObject = function(opt_includeInstance
 proto.entity.ListEntityRequest.toObject = function(includeInstance, msg) {
   var f, obj = {
     parententityid: jspb.Message.getFieldWithDefault(msg, 1, ""),
-    requesterid: jspb.Message.getFieldWithDefault(msg, 2, "")
+    requesterid: jspb.Message.getFieldWithDefault(msg, 2, ""),
+    projectid: jspb.Message.getFieldWithDefault(msg, 3, "")
   };
 
   if (includeInstance) {
@@ -1259,6 +1260,10 @@ proto.entity.ListEntityRequest.deserializeBinaryFromReader = function(msg, reade
       var value = /** @type {string} */ (reader.readString());
       msg.setRequesterid(value);
       break;
+    case 3:
+      var value = /** @type {string} */ (reader.readString());
+      msg.setProjectid(value);
+      break;
     default:
       reader.skipField();
       break;
@@ -1302,6 +1307,13 @@ proto.entity.ListEntityRequest.serializeBinaryToWriter = function(message, write
       f
     );
   }
+  f = message.getProjectid();
+  if (f.length > 0) {
+    writer.writeString(
+      3,
+      f
+    );
+  }
 };
 
 
@@ -1338,6 +1350,24 @@ proto.entity.ListEntityRequest.prototype.getRequesterid = function() {
  */
 proto.entity.ListEntityRequest.prototype.setRequesterid = function(value) {
   return jspb.Message.setProto3StringField(this, 2, value);
+};
+
+
+/**
+ * optional string projectId = 3;
+ * @return {string}
+ */
+proto.entity.ListEntityRequest.prototype.getProjectid = function() {
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 3, ""));
+};
+
+
+/**
+ * @param {string} value
+ * @return {!proto.entity.ListEntityRequest} returns this
+ */
+proto.entity.ListEntityRequest.prototype.setProjectid = function(value) {
+  return jspb.Message.setProto3StringField(this, 3, value);
 };
 
 
