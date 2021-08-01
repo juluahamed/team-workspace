@@ -3,9 +3,15 @@ const {Joi} = require('express-validation');
 module.exports = {
   registerUser:{
     body: Joi.object({
-      userName: Joi.string(),
-      name: Joi.string(),
-      password: Joi.string()
+      userName: Joi.string().required(),
+      name: Joi.string().required(),
+      password: Joi.string().required()
     })
-  }, 
+  },
+  loginUser: {
+    body: Joi.object({
+        userName: Joi.string().required(),
+        password: Joi.string().required(),
+      })
+  } 
 };
