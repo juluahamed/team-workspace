@@ -38,10 +38,12 @@ message UserResponse {
     string username = 2;
     string name = 3;
     string token = 4;
+    string error = 5;
 }
 
 message UserVerifyResponse {
     string userId = 1;
     string username = 2;
     string name = 3;
+    string error = 4;
 }
