@@ -1,11 +1,10 @@
 const express = require('express');
 const {validate} = require('express-validation');
-const controller = require('../../controllers/project.controller');
+const controller = require('../../controllers/entity.controller');
 const {verify} = require('../../controllers/user.controller');
-const {createProject} = require('../../validators/project.validator')
+const {createEntity, listEntity} = require('../../validators/entity.validator')
 
 // const {
-
 //   registerDevice,
 // } = require('../../validations/profile.validation');
 
@@ -13,9 +12,12 @@ const router = express.Router();
 
 router
   .route('/create')
-  .post(verify, validate(createProject), controller.createProject);
+  .post(verify, validate(createEntity), controller.createEntity);
   // .post(validate(), controller.getUser)
 
+router
+  .route('/list')
+  .post(verify, validate(listEntity), controller.listEntity);
 
 
 

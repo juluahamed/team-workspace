@@ -50,6 +50,7 @@ message EntityResponse {
 message ListEntityRequest {
     string parentEntityId = 1;
     string requesterId = 2;
+    string projectId = 3;
 }
 
 

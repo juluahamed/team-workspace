@@ -45,7 +45,7 @@ module.exports = class API {
     }
   };
   verify = async (call, callback) => {
-    const resp = new messages.UserResponse();
+    const resp = new messages.UserVerifyResponse();
 
     const response = await verifyJwt(call.request.getToken());
 
@@ -66,10 +66,12 @@ module.exports = class API {
       const password = call.request.getPassword();
       const user = await UserRead.findOne({userName});
       if (user) {
-        const hash = await bcrypt.hash(password, 10);
-        console.log('hash', hash);
+        // const hash = await bcrypt.hash(password, 10);
+        // console.log('hash', hash);
+        const match = bcrypt.compare(password, user.passwordHash)
+        console.log('match', match);
         console.log('user of the hash', user)
-        if (hash === user.passwordHash) {
+        if (match) {
           const tokenisableObject = user.getPublic()
           const token = await generateToken(tokenisableObject)
           resp.setUserid(tokenisableObject.userId)

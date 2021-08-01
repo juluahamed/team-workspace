@@ -54,6 +54,22 @@ const loginResponseParser = (response) => {
 
 }
 
+const verifyResponseParser = (response) => {
+    if (response &&  response.array && response.array.length === 3) {
+        return  {
+                userId: response.array[0],
+                userName: response.array[1],
+                name: response.array[2],
+                error: response.array[3]
+            }
+
+    } else {
+        let error = response.array[3] ? response.array[3] : 'Unexpected error from userService. Check logs'
+        return false
+    }
+
+}
+
 exports.registerUser = async (req, res, next) => {
     console.log('Inside here')
     try {
@@ -85,6 +101,32 @@ exports.loginUser = async (req, res, next) => {
 
             const result = loginResponseParser(response)
             res.status(result.statusCode).json(result)
+        });
+    } catch (error) {
+        console.log('Error:', error)
+        next(error);
+    }
+};
+
+exports.verify = async (req, res, next) => {
+    console.log('Inside here')
+    try {
+        const getUserverifyReq = new messages.UserVerifyRequest();
+        getUserverifyReq.setToken(req.header('authorization'));
+        client.verify(getUserverifyReq, function(err, response) {
+            console.log('This is a response from ', response);
+
+            const result = verifyResponseParser(response)
+            if (result) {
+                req.local= result
+                next()
+            } else {
+                res.status(400).json({
+                    success: false,
+                    error: 'Token validation failed'
+                })
+            }
+            // res.status(result.statusCode).json(result)
         });
     } catch (error) {
         console.log('Error:', error)

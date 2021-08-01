@@ -4,20 +4,20 @@ const grpc = require('@grpc/grpc-js');
 const client = new services.ProjectSvcClient('localhost:50052', grpc.credentials.createInsecure());
 
 const createResponseParser = (response) => {
-    if (response &&  response.array && response.array.length === 7) {
+    if (response &&  response.array && response.array.length === 5) {
         return {
             success: true,
             statusCode: 200,
             data: {
-                userId: response.array[0],
-                userName: response.array[1],
-                name: response.array[2],
-                token: response.array[3],
-                error: response.array[4]
+                projectId: response.array[0],
+                name: response.array[1],
+                owner: response.array[2],
+                defaultProject: response.array[3],
+                sharedUsers: response.array[4]
             }
         }
     } else {
-        let error = response.array[7] ? response.array[7] : 'Unexpected error from projectService. Check logs'
+        let error = response.array[5] ? response.array[5] : 'Unexpected error from projectService. Check logs'
         return {
             success: false,
             statusCode: 400,

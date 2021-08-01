@@ -1,5 +1,7 @@
 const express = require('express');
 const userRoutes = require('./user.route');
+const entityRoutes = require('./entity.route');
+const projectRoutes = require('./project.route');
 const validate = require('express-validation');
 
 // const auth0Jwt = require('../../middlewares/auth0jwt');
@@ -8,7 +10,8 @@ const validate = require('express-validation');
 const router = express.Router();
 
 router.use('/user', userRoutes);
-
+router.use('/entity', entityRoutes)
+router.use('/project', projectRoutes)
 
 
 
