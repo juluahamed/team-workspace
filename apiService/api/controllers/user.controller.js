@@ -1,7 +1,7 @@
 const messages = require('../../proto/user_pb');
 const services = require('../../proto/user_grpc_pb');
 const grpc = require('@grpc/grpc-js');
-const client = new services.UserSvcClient('localhost:8001', grpc.credentials.createInsecure());
+const client = new services.UserSvcClient('user:50051', grpc.credentials.createInsecure());
 const {createDefaultProject} = require('./project.controller')
 
 const regResponseParser = (response) => {
