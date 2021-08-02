@@ -39,6 +39,9 @@ Example flow (1 cluster with 3 replica).
 
 <img src="sample_flow.png">
 
+## Sample Postman collection 
+to do basic operation via apiService is availble above (see ```team-workspace.postman_collection.json```
+
 ## Implementation Details
 
 There will be 4 services
