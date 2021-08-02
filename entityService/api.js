@@ -71,8 +71,9 @@ module.exports = class API {
       // const savedEntity = await newEntity.save();
       
       console.log('retrievedEntities', entities);
-      resp.setEntitylistresponse(entities)
-      callback(null, resp);
+      // resp.setEntitiesList(entities);
+      // resp.temp = entities;
+      callback(null, resp, entities);
 
     } catch(err) {
         console.log(err)
