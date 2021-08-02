@@ -68,14 +68,14 @@ exports.listEntity = async (req, res, next) => {
 
 
         client.list(listReq, function(err, response, extras) {
-            console.log('This is a response from xxxx', response);
+            console.log('This is a response from xxxx', response.array);
             console.log('ERRRR', err);
             console.log('extras', extras)
 
             // const result = createResponseParser(response)
             res.status(200).json({
                 success: true,
-                data: response
+                entities: response.array[0]
             })
         });
     } catch (error) {

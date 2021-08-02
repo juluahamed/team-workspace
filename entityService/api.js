@@ -66,14 +66,14 @@ module.exports = class API {
       
       const entities = await model.find({parent: parentEntity, owner: requesterid});
       
-
+      const reductedValue = entities.map(a=> a.entityId)
       // const newEntity = new model({name, owner, sharedUsers, parent, content, entityType, projectId, createdAt, updatedAt});
       // const savedEntity = await newEntity.save();
       
       console.log('retrievedEntities', entities);
-      // resp.setEntitiesList(entities);
+      resp.setEntitiesList(reductedValue);
       // resp.temp = entities;
-      callback(null, resp, entities);
+      callback(null, resp,);
 
     } catch(err) {
         console.log(err)
