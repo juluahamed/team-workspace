@@ -67,11 +67,16 @@ exports.listEntity = async (req, res, next) => {
         listReq.setProjectid(req.body.projectId);
 
 
-        client.list(createReq, function(err, response) {
-            console.log('This is a response from ', response);
+        client.list(listReq, function(err, response, extras) {
+            console.log('This is a response from xxxx', response);
+            console.log('ERRRR', err);
+            console.log('extras', extras)
 
-            const result = createResponseParser(response)
-            res.status(result.statusCode).json(result)
+            // const result = createResponseParser(response)
+            res.status(200).json({
+                success: true,
+                data: response
+            })
         });
     } catch (error) {
         console.log('Error:', error)

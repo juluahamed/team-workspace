@@ -55,7 +55,7 @@ message ListEntityRequest {
 
 
 message EntityListResponse {
-    repeated EntityResponse entities = 1;
+    repeated string entities = 1;
 }
 
 
