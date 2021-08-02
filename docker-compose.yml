@@ -9,6 +9,9 @@ services:
         environment:
             - DB_URI=mongodb://mongo:27017/
             - DB_NAME=team-workspace
+            - HOST=0.0.0.0
+            - PORT=50051
+            - JWT_SECRET=notasecuresecret
         ports:
             - 8001:50051
         depends_on:
@@ -22,6 +25,9 @@ services:
         environment:
             - DB_URI=mongodb://mongo:27017/
             - DB_NAME=team-workspace
+            - HOST=0.0.0.0
+            - PORT=50052
+            - JWT_SECRET=notasecuresecret
         ports:
             - 8002:50052
         depends_on:
@@ -35,6 +41,8 @@ services:
         environment:
             - DB_URI=mongodb://mongo:27017/
             - DB_NAME=team-workspace
+            - HOST=0.0.0.0
+            - PORT=50053
         ports:
             - 8003:50053
         depends_on:
@@ -48,6 +56,8 @@ services:
         environment:
             - DB_URI=mongodb://mongo:27017/
             - DB_NAME=team-workspace
+            - NODE_ENV=production
+            - PORT=8000
         ports:
             - 8010:8000
         depends_on:
