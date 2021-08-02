@@ -32,6 +32,10 @@ server {
         }
 } 
 ```
+<img src="deployment-1.png">
+
+
+<img src="sample-flow.png">
 
 ## Implementation Details
 
