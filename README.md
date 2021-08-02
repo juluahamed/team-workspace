@@ -34,7 +34,7 @@ server {
 ```
 <img src="deployment-1.png">
 
-Example flow
+Example flow (1 cluster with 3 replica).
 
 
 <img src="sample_flow.png">
