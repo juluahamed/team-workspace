@@ -1410,8 +1410,7 @@ proto.entity.EntityListResponse.prototype.toObject = function(opt_includeInstanc
  */
 proto.entity.EntityListResponse.toObject = function(includeInstance, msg) {
   var f, obj = {
-    entitiesList: jspb.Message.toObjectList(msg.getEntitiesList(),
-    proto.entity.EntityResponse.toObject, includeInstance)
+    entitiesList: (f = jspb.Message.getRepeatedField(msg, 1)) == null ? undefined : f
   };
 
   if (includeInstance) {
@@ -1449,8 +1448,7 @@ proto.entity.EntityListResponse.deserializeBinaryFromReader = function(msg, read
     var field = reader.getFieldNumber();
     switch (field) {
     case 1:
-      var value = new proto.entity.EntityResponse;
-      reader.readMessage(value,proto.entity.EntityResponse.deserializeBinaryFromReader);
+      var value = /** @type {string} */ (reader.readString());
       msg.addEntities(value);
       break;
     default:
@@ -1484,41 +1482,39 @@ proto.entity.EntityListResponse.serializeBinaryToWriter = function(message, writ
   var f = undefined;
   f = message.getEntitiesList();
   if (f.length > 0) {
-    writer.writeRepeatedMessage(
+    writer.writeRepeatedString(
       1,
-      f,
-      proto.entity.EntityResponse.serializeBinaryToWriter
+      f
     );
   }
 };
 
 
 /**
- * repeated EntityResponse entities = 1;
- * @return {!Array<!proto.entity.EntityResponse>}
+ * repeated string entities = 1;
+ * @return {!Array<string>}
  */
 proto.entity.EntityListResponse.prototype.getEntitiesList = function() {
-  return /** @type{!Array<!proto.entity.EntityResponse>} */ (
-    jspb.Message.getRepeatedWrapperField(this, proto.entity.EntityResponse, 1));
+  return /** @type {!Array<string>} */ (jspb.Message.getRepeatedField(this, 1));
 };
 
 
 /**
- * @param {!Array<!proto.entity.EntityResponse>} value
+ * @param {!Array<string>} value
  * @return {!proto.entity.EntityListResponse} returns this
-*/
+ */
 proto.entity.EntityListResponse.prototype.setEntitiesList = function(value) {
-  return jspb.Message.setRepeatedWrapperField(this, 1, value);
+  return jspb.Message.setField(this, 1, value || []);
 };
 
 
 /**
- * @param {!proto.entity.EntityResponse=} opt_value
+ * @param {string} value
  * @param {number=} opt_index
- * @return {!proto.entity.EntityResponse}
+ * @return {!proto.entity.EntityListResponse} returns this
  */
-proto.entity.EntityListResponse.prototype.addEntities = function(opt_value, opt_index) {
-  return jspb.Message.addToRepeatedWrapperField(this, 1, opt_value, proto.entity.EntityResponse, opt_index);
+proto.entity.EntityListResponse.prototype.addEntities = function(value, opt_index) {
+  return jspb.Message.addToRepeatedField(this, 1, value, opt_index);
 };
 
 
