@@ -1,7 +1,7 @@
 const messages = require('../../proto/entity_pb');
 const services = require('../../proto/entity_grpc_pb');
 const grpc = require('@grpc/grpc-js');
-const client = new services.EntitySvcClient('entity:8003', grpc.credentials.createInsecure());
+const client = new services.EntitySvcClient('entity:50053', grpc.credentials.createInsecure());
 
 const createResponseParser = (response) => {
     if (response &&  response.array && response.array.length === 8) {

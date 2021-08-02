@@ -1,7 +1,7 @@
 const messages = require('../../proto/project_pb');
 const services = require('../../proto/project_grpc_pb');
 const grpc = require('@grpc/grpc-js');
-const client = new services.ProjectSvcClient('project:8002', grpc.credentials.createInsecure());
+const client = new services.ProjectSvcClient('project:50052', grpc.credentials.createInsecure());
 
 const createResponseParser = (response) => {
     if (response &&  response.array && response.array.length === 5) {
