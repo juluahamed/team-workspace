@@ -12,6 +12,26 @@ Simple Team workspace using gRPC
 - [ ] Deployment scripts - Day 2
 - [ ] E2E Test Day 2
 
+## Deployment 
+To deploy on server all the microservices can be composed by running docker-compose as below
+- ```docker-compose -p <any-name> up -d```
+
+For public internet facing use cse , you can proxy_pass apiService behind a nginx
+
+Sample Nginx server block assuming you are binding apiService to port 8010
+
+``` 
+server {
+        listen 80;
+        listen [::]:80;
+
+
+        location /api {
+            include proxy_params;
+            proxy_pass http://127.0.0.1:8010;
+        }
+} 
+```
 
 ## Implementation Details
 
